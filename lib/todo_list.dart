@@ -13,7 +13,7 @@ class TodoList extends StatelessWidget {
       ),
       body: BlocBuilder<TodoCubit, TodoState>(
         builder: (context, state) {
-          if (state is TodoInitial) {
+          if (state is TodoLoaded) {
             return Column(
               children: [
                 if (state.error != null)

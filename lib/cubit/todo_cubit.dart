@@ -4,11 +4,11 @@ import 'package:todo_list/models/todo_model.dart';
 part 'todo_state.dart';
 
 class TodoCubit extends Cubit<TodoState> {
-  TodoCubit() : super(TodoInitial(todos: []));
+  TodoCubit() : super(TodoLoaded(todos: []));
 
   void add(String title) {
     if (title.isEmpty) {
-      final currentState = state as TodoInitial;
+      final currentState = state as TodoLoaded;
       emit(currentState.copyWith(error: 'Title is required'));
       return;
     }
@@ -18,8 +18,8 @@ class TodoCubit extends Cubit<TodoState> {
       createdAt: DateTime.now(),
     );
 
-    final currentState = state as TodoInitial;
-    emit(TodoInitial(
+    final currentState = state as TodoLoaded;
+    emit(TodoLoaded(
       todos: [...currentState.todos, todo],
       error: null,
     ));
